@@ -16,3 +16,6 @@
 // WHEN I decide to finish building my team
 // THEN I exit the application, and the HTML is generated
 
+const inquirer = require('inquirer');
+const fs = require('fs');
+const generateHtml = require('./src/generatehtml.js');

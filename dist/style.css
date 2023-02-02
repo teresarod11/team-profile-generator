@@ -1,0 +1,29 @@
+:root {
+    --green: #1E3231;
+    --blackCoral: #485665;
+    --darkPink: #8E7C93;
+    --pinkLavender: #D0A5C0;
+    --lightPink: #F6C0D0;
+}
+
+body {
+    background-color: var(--darkPink) !important;
+}
+
+#navbar {
+    background-color: var(--green) !important; 
+}
+
+.navbar-brand {
+    color: var(--lightPink) !important;
+}
+
+.card {
+    background-color: var(--pinkLavender);
+    color: var(--green) !important;
+}
+
+.list-group-item {
+    background-color: var(--green);
+    color: var(--lightPink);
+}
