@@ -24,13 +24,45 @@ function generateHtml(){
 };
 
 function generateEngineer(){
-  return ``
+  return `<section class="d-flex gap-3 mt-5 justify-content-center">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Engineer</h5>
+      <p class="card-text">${date.engineerName}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">ID:</li>
+      <li class="list-group-item">Email:</li>
+      <li class="list-group-item">Github:</li>
+    </ul>
+  </div>`
 };
 
 function generateIntern(){
-  return ``
+  return `<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Intern</h5>
+    <p class="card-text">${data.name}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">ID:</li>
+    <li class="list-group-item">Email:</li>
+    <li class="list-group-item">School:</li>
+  </ul>
+</div>`
 };
 
 function generateManager(){
-  return ``
+  return `<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Manager</h5>
+    <p class="card-text">${this.name}</p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">ID:</li>
+    <li class="list-group-item">Email:</li>
+    <li class="list-group-item">Office Number:</li>
+  </ul>
+</div>
+</section>`
 };

@@ -18,4 +18,87 @@
 
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateHtml = require('./src/generatehtml.js');
+const generateHtml = require('./src/generatehtml');
+const employee = require('./lib/Employee');
+const engineer = require('./lib/Engineer');
+const intern = require('./lib/Intern');
+const manager = require('./lib/Manager');
+
+employee = [
+    {
+       type: "checkbox",
+       name: "choice",
+       message: "" 
+    }
+]
+
+
+engineer = [ 
+    {
+        type: "input",
+        name: "id",
+        message: "What is the engineer's id?",
+    },
+    {
+        type: "input",
+        name: "name",
+        message: "What is the engineer's name?",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is the engineer's email?",
+
+    },
+    {
+        type: "input",
+        name: "github",
+        message: "What is the engineer's github?",
+    },
+];
+intern = [ 
+    {
+        type: "input",
+        name: "id",
+        message: "What is the intern's id?",
+    },
+    {
+        type: "input",
+        name: "name",
+        message: "What is the intern's name?",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is the intern's email?",
+
+    },
+    {
+        type: "input",
+        name: "school",
+        message: "What is the intern's school?",
+    },
+];
+manager = [ 
+    {
+        type: "input",
+        name: "id",
+        message: "What is the manager's id?",
+    },
+    {
+        type: "input",
+        name: "name",
+        message: "What is the manager's name?",
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "What is the manager's email?",
+
+    },
+    {
+        type: "input",
+        name: "ON",
+        message: "What is the manager's office number?",
+    },
+];
