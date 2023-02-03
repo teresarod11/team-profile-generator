@@ -1,4 +1,13 @@
-function generateHtml(){
+function generateHtml(array){ 
+  const cardsArray = array.map(employee => {
+    if (employee.getRole() === "Manager"){
+      generateManager(employee)
+    }else if (employee.getRole() === "Intern"){
+      generateIntern(employee)
+    } else {
+      generateEngineer(employee)
+    }
+  }) 
     return `<!DOCTYPE html>
     <html lang="en">
     
@@ -23,46 +32,48 @@ function generateHtml(){
           </nav>`
 };
 
-function generateEngineer(){
+function generateEngineer(engineer){
   return `<section class="d-flex gap-3 mt-5 justify-content-center">
   <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">Engineer</h5>
-      <p class="card-text">${date.engineerName}</p>
+      <p class="card-text">${engineer.getName()}</p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item">ID:</li>
-      <li class="list-group-item">Email:</li>
-      <li class="list-group-item">Github:</li>
+      <li class="list-group-item">ID:${engineer.getId()}</li>
+      <li class="list-group-item">Email:${engineer.getEmail()}</li>
+      <li class="list-group-item">Github:${engineer.getGithub()}</li>
     </ul>
   </div>`
 };
 
-function generateIntern(){
+function generateIntern(intern){
   return `<div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Intern</h5>
-    <p class="card-text">${data.name}</p>
+    <p class="card-text">${intern.getName()}</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">ID:</li>
-    <li class="list-group-item">Email:</li>
-    <li class="list-group-item">School:</li>
+    <li class="list-group-item">ID:${intern.getId()}</li>
+    <li class="list-group-item">Email:${intern.getEmail()}</li>
+    <li class="list-group-item">School:${intern.getSchool()}</li>
   </ul>
 </div>`
 };
 
-function generateManager(){
+function generateManager(manager){
   return `<div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Manager</h5>
-    <p class="card-text">${this.name}</p>
+    <p class="card-text">${manager.getName()}</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">ID:</li>
-    <li class="list-group-item">Email:</li>
-    <li class="list-group-item">Office Number:</li>
+    <li class="list-group-item">ID:${manager.getId()}</li>
+    <li class="list-group-item">Email:${manager.getEmail()}</li>
+    <li class="list-group-item">Office Number:${manager.getOfficeNumber()}</li>
   </ul>
 </div>
 </section>`
 };
+
+module.exports = generateHtml

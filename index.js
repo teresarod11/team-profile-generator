@@ -19,21 +19,38 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateHtml = require('./src/generatehtml');
-const employee = require('./lib/Employee');
-const engineer = require('./lib/Engineer');
-const intern = require('./lib/Intern');
-const manager = require('./lib/Manager');
+const Employee = require('./lib/Employee');
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+let all = [];
 
-employee = [
+
+function main(){
+    inquirer.prompt([
     {
-       type: "checkbox",
+       type: "list",
        name: "choice",
-       message: "" 
+       message: "Would you like to add an employee?",
+       choices: ["manager", "engineer", "intern", "Build profile"] 
     }
-]
+]) 
+    .then((answers) => {
+        if (answers.choice === "engineer"){
+            addEngineer()
+        } else if (answers.choice === "intern"){
+            addIntern()
+        } else if (answers.choice === "manager"){
+            addManager()
+        } else {
+            addProfile()
+        }
+    })
+} 
+main();
 
-
-engineer = [ 
+function addEngineer(){
+    inquirer.prompt([ 
     {
         type: "input",
         name: "id",
@@ -55,8 +72,15 @@ engineer = [
         name: "github",
         message: "What is the engineer's github?",
     },
-];
-intern = [ 
+])
+    .then((answers) => {
+        const engineer = new Engineer(answers.id, answers.name, answers.email, answers.github);
+        all.push(engineer);
+        main();
+    })
+} 
+function addIntern(){
+    inquirer.prompt([ 
     {
         type: "input",
         name: "id",
@@ -78,8 +102,15 @@ intern = [
         name: "school",
         message: "What is the intern's school?",
     },
-];
-manager = [ 
+])
+    .then((answers) => {
+        const intern = new Intern(answers.id, answers.name, answers.email, answers.school);
+        all.push(intern);
+        main();
+    })
+} 
+function addManager(){
+    inquirer.prompt([ 
     {
         type: "input",
         name: "id",
@@ -101,4 +132,18 @@ manager = [
         name: "ON",
         message: "What is the manager's office number?",
     },
-];
+])
+    .then((answers) => {
+        const manager = new Manager(answers.id, answers.name, answers.email, answers.officeNumber);
+        all.push(manager);
+        main();
+    })
+} 
+
+function addProfile(){
+    const html = generateHtml(all)
+
+    fs.writeFile('./dist/index.html', html, (err) => 
+    err ? console.log(err) : console.log('Profile was successfully made!')
+    )
+}
