@@ -20,10 +20,16 @@ body {
 
 .card {
     background-color: var(--pinkLavender);
-    color: var(--green) !important;
+    color: var(--green) !important;    
+   
 }
 
 .list-group-item {
     background-color: var(--green);
     color: var(--lightPink);
+}
+
+.section {
+    display: flex !important;
+    justify-content: center !important;
 }

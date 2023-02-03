@@ -129,7 +129,7 @@ function addManager(){
     },
     {
         type: "input",
-        name: "ON",
+        name: "officeNumber",
         message: "What is the manager's office number?",
     },
 ])

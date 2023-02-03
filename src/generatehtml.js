@@ -1,14 +1,15 @@
 function generateHtml(array){ 
   const cardsArray = array.map(employee => {
     if (employee.getRole() === "Manager"){
-      generateManager(employee)
+      return generateManager(employee)
     }else if (employee.getRole() === "Intern"){
-      generateIntern(employee)
+      return generateIntern(employee)
     } else {
-      generateEngineer(employee)
+      return generateEngineer(employee)
     }
   }) 
-    return `<!DOCTYPE html>
+
+    let htmlData = `<!DOCTYPE html>
     <html lang="en">
     
     <head>
@@ -30,6 +31,14 @@ function generateHtml(array){
               </p>
             </div>
           </nav>`
+    for (var i=0; i<cardsArray.length; i++ ){
+            htmlData+=cardsArray[i]
+          }
+  htmlData+= `
+  </body>
+  </html>`
+return htmlData
+
 };
 
 function generateEngineer(engineer){
@@ -58,11 +67,13 @@ function generateIntern(intern){
     <li class="list-group-item">Email:${intern.getEmail()}</li>
     <li class="list-group-item">School:${intern.getSchool()}</li>
   </ul>
-</div>`
+</div>
+</section>`
 };
 
 function generateManager(manager){
-  return `<div class="card" style="width: 18rem;">
+  return `<section class="d-flex gap-3 mt-5 justify-content-center">
+  <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">Manager</h5>
     <p class="card-text">${manager.getName()}</p>
